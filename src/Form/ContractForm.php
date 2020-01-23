@@ -18,8 +18,6 @@ class ContractForm extends AbstractType
         $builder
             ->add('name', TextType::class)
             ->add('slug', TextType::class)
-            ->add('createDateTime', DateTimeType::class)
-            ->add('updatedDateTime', DateTimeType::class)
             ->add('type', EntityType::class,[
                 'class' => ContractType::class,
                 'placeholder' => 'choisir un type de contrat'

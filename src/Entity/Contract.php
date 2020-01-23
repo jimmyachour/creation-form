@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use DateTime;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ContractRepository")
@@ -42,6 +44,13 @@ class Contract
      */
     private $type;
 
+    public function __construct()
+    {
+        $this->createDateTime = new DateTime();
+        $this->updatedDateTime = new DateTime();
+
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -78,7 +87,7 @@ class Contract
 
     public function setCreateDateTime(\DateTimeInterface $createDateTime): self
     {
-        $this->createDateTime = $createDateTime;
+        $this->createDateTime = substr($createDateTime,0,10);
 
         return $this;
     }
@@ -106,4 +115,8 @@ class Contract
 
         return $this;
     }
+    public function __toString() {
+        return $this->name;
+    }
+
 }

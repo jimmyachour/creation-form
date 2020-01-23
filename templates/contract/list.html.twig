@@ -3,5 +3,30 @@
 {% block title %}<title>List Contracts</title>{% endblock %}
 
 {% block body %}
-  liste des contrats
+  <div class="jumbotron text-center"><h2 class="text-uppercase">liste des contrats</h2></div>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Slug</th>
+      <th scope="col">Contrat</th>
+      <th scope="col">created_at</th>
+      <th scope="col">updated_at</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for contract in contracts %}
+    <tr>
+
+      <td>{{ contract.name }}</td>
+      <td>{{ contract.slug }}</td>
+      <td>{{ contract.type }}</td>
+      <td>{{ contract.createDateTime|date("d/m/Y")  }}</td>
+      <td>{{ contract.updatedDateTime|date("d/m/Y") }}</td>
+    </tr>
+    {% endfor %}
+
+    </tbody>
+  </table>
 {% endblock %}

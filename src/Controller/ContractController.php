@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Contract;
 use App\Form\ContractForm;
+use App\Repository\ContractRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -26,8 +27,7 @@ class ContractController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($contract);
             $entityManager->flush();
-
-            return $this->redirectToRoute('question_index');
+            return $this->redirectToRoute('contract_list');
         }
 
         return $this->render('contract/create.html.twig', [
@@ -39,9 +39,10 @@ class ContractController extends AbstractController
     /**
      * @Route("/contract/list", name="contract_list")
      */
-    public function list()
+    public function list(ContractRepository $contracts)
     {
         return $this->render('contract/list.html.twig', [
+            'contracts' => $contracts->findAll()
 
         ]);
     }
