@@ -32,7 +32,7 @@ class ContractAdditionalPropertyFixtures extends Fixture
         $property3->setTitle('carburant');
         $this->addReference('property3',$property3);
         $manager->persist($property3);
-
+        $manager->flush();
 
         /********* Immo *********/
 
@@ -65,6 +65,7 @@ class ContractAdditionalPropertyFixtures extends Fixture
         $property9->setTitle('nombre de chambre');
         $this->addReference('property9',$property9);
         $manager->persist($property9);
+
         $manager->flush();
     }
 }
