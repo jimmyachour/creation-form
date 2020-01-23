@@ -1,0 +1,44 @@
+<div class="container-fluid">
+
+    <footer class="row">
+
+
+        <div class="col-lg-2 col-md-3 footer-logo">
+            <img class="footer-logo-img" src="{{ asset("build/Logo80x80.png") }}" alt="logo Authentic Trip">
+            <h2>Authentic Trip</h2>
+        </div>
+
+        <div class="col-lg-5 col-md-9 footer-links">
+
+            <ul>
+                <li><a href="{{ path('app_home') }}">Accueil</a></li>
+                <li><a href="#">Assistant</a></li>
+                <li><a href="#">Nos séjours</a></li>
+                <li><a href="{{ path('app_contact') }}">Contact</a></li>
+            </ul>
+
+            <ul>
+                <li><a href="#">A propos</a></li>
+                <li><a href="{{ path('app_cgu') }}">CGV</a></li>
+            </ul>
+
+            <ul>
+                <li><a href="{{ path('app_contact') }}">Aide</a></li>
+                <li><a href="{{ path('app_contact') }}">Partenaires</a></li>
+            </ul>
+
+        </div>
+
+        <div class="news col-lg-2  col-md-5">
+            <input type="email" name="email" placeholder="Email">
+            <p>Stay in touch with us for the freshest products !</p>
+        </div>
+
+        <div class="social-network col-lg-2 col-md-5">
+            <a href="#"><img src="{{ asset("build/social-network/instagram.png") }}" alt="logo instagram"> </a>
+            <a href="#"><img src="{{ asset("build/social-network/twitter.png") }}" alt="logo twitter"> </a>
+            <a href="#"><img src="{{ asset("build/social-network/facebook-logo.png") }}" alt="logo facebook"></a>
+        </div>
+
+    </footer>
+</div>

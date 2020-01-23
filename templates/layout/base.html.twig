@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://unpkg.com/@coreui/coreui@3.0.0-alpha.13/dist/css/coreui.min.css">
+    <title>{% block title %}Creation Form{% endblock %}</title>
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+</head>
+
+<body class="c-app">
+
+{% include 'layout/verticalNav.html.twig' %}
+<div class="c-wrapper">
+{% include 'layout/navbar.html.twig' %}
+
+<div class="c-body dashboard-background">
+    <main class="c-main content-container">
+
+        {% for label, messages in app.flashes(['success', 'warning']) %}
+            {% for message in messages %}
+                {% if label is same as('warning') %}
+                    <div class="flash-box alert alert-danger flash-{{ label }}">
+                {% else %}
+                    <div class="flash-box alert alert-success flash-{{ label }}">
+                {% endif %}
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+        {% block body %}{% endblock %}
+    </main>
+</div>
+</div>
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js" integrity="sha384-L2pyEeut/H3mtgCBaUNw7KWzp5n9&#43;4pDQiExs933/5QfaTh8YStYFFkOzSoXjlTb" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@coreui/coreui@3.0.0-alpha.13/dist/js/coreui.min.js"></script>
+</body>
+</html>

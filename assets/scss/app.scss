@@ -1,0 +1,15 @@
+$light-blue : #20a8d8;
+
+body {
+    .c-sidebar-dark{
+        background-color: #23282c;
+        .c-nav-link:hover {
+            background-color: $light-blue;
+        }
+    }
+    background-color: lightgray;
+    .content-container {
+        padding: 20px;
+    }
+}
+
