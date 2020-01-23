@@ -22,9 +22,10 @@ class ContractAdditionalProperty
     private $title;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="App\Entity\ContractType", inversedBy="additionalProperties")
+     * @ORM\JoinColumn(nullable=true)
      */
-    private $value;
+    private $contractType;
 
     public function getId(): ?int
     {
@@ -51,6 +52,18 @@ class ContractAdditionalProperty
     public function setValue(string $value): self
     {
         $this->value = $value;
+
+        return $this;
+    }
+
+    public function getContractType(): ?ContractType
+    {
+        return $this->contractType;
+    }
+
+    public function setContractType(?ContractType $contractType): self
+    {
+        $this->contractType = $contractType;
 
         return $this;
     }

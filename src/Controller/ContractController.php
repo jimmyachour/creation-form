@@ -27,7 +27,7 @@ class ContractController extends AbstractController
             $entityManager->persist($contract);
             $entityManager->flush();
 
-            return $this->redirectToRoute('question_index');
+            return $this->redirectToRoute('home');
         }
 
         return $this->render('contract/create.html.twig', [

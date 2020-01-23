@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+
+<title>Edit ContractType</title>
+
+{% block body %}
+    <h1>Edit ContractType</h1>
+
+    {{ include('contract_type/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('contract_type_index') }}">back to list</a>
+
+    {{ include('contract_type/_delete_form.html.twig') }}
+{% endblock %}
