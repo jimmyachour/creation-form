@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Contract;
+use App\Entity\ContractType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -18,7 +20,10 @@ class ContractForm extends AbstractType
             ->add('slug', TextType::class)
             ->add('createDateTime', DateTimeType::class)
             ->add('updatedDateTime', DateTimeType::class)
-            ->add('type')
+            ->add('type', EntityType::class,[
+                'class' => ContractType::class,
+                'placeholder' => 'choisir un type de contrat'
+            ])
         ;
     }
 

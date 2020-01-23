@@ -33,6 +33,9 @@ class ContractType
      */
     private $additionalProperties;
 
+
+    const NEW_TYPE = 0;
+
     public function __construct()
     {
         $this->contracts = new ArrayCollection();
