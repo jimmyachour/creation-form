@@ -18,21 +18,17 @@ class ContractTypeFixtures extends Fixture implements DependentFixtureInterface
             $contractType->addAdditionalProperty($this->getReference('property' . $x));
 
         }
-        $this->addReference('cession_car' ,$contractType);
         $manager->persist($contractType);
+        $manager->flush();
 
         $contractType1 = new ContractType();
         $contractType1->setName('immobilier');
-        for($x=4; $x <= 9; $x++) {
-            $contractType->addAdditionalProperty($this->getReference('property' . $x));
-
+        for($y=4; $y <= 9; $y++) {
+            $contractType1->addAdditionalProperty($this->getReference('property' . $y));
         }
-        $this->addReference('immo' ,$contractType1);
         $manager->persist($contractType1);
-
         $manager->flush();
     }
-
 
     public function getDependencies()
     {
