@@ -1,0 +1,38 @@
+{% extends  'layout/base.html.twig' %}
+
+{% block title %}Contracts Type{% endblock %}
+
+{% block body %}<div class="card">
+    <div class="card-header"><h1>ContractType index</h1></div>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for contract_type in contract_types %}
+                <tr>
+                    <td>{{ contract_type.id }}</td>
+                    <td>{{ contract_type.name }}</td>
+                    <td>
+                        <a href="{{ path('contract_type_show', {'id': contract_type.id}) }}">show</a>
+                        <a href="{{ path('contract_type_edit', {'id': contract_type.id}) }}">edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('contract_type_new') }}">Create new</a>
+    </div>
+    </div>
+
+{% endblock %}

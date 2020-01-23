@@ -27,7 +27,9 @@ class ContractController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($contract);
             $entityManager->flush();
+
             return $this->redirectToRoute('contract_list');
+
         }
 
         return $this->render('contract/create.html.twig', [

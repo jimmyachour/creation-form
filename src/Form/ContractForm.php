@@ -20,6 +20,7 @@ class ContractForm extends AbstractType
             ->add('slug', TextType::class)
             ->add('type', EntityType::class,[
                 'class' => ContractType::class,
+                'choice_label' => 'name',
                 'placeholder' => 'choisir un type de contrat'
             ])
         ;

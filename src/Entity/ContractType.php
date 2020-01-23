@@ -29,9 +29,10 @@ class ContractType
     private $contracts;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\ContractAdditionalProperty")
+     * @ORM\OneToMany(targetEntity="App\Entity\ContractAdditionalProperty", mappedBy="contractType", orphanRemoval=true)
      */
     private $additionalProperties;
+
 
 
     const NEW_TYPE = 0;
@@ -102,6 +103,7 @@ class ContractType
     {
         if (!$this->additionalProperties->contains($additionalProperty)) {
             $this->additionalProperties[] = $additionalProperty;
+            $additionalProperty->setContractType($this);
         }
 
         return $this;
@@ -111,10 +113,15 @@ class ContractType
     {
         if ($this->additionalProperties->contains($additionalProperty)) {
             $this->additionalProperties->removeElement($additionalProperty);
+            // set the owning side to null (unless already changed)
+            if ($additionalProperty->getContractType() === $this) {
+                $additionalProperty->setContractType(null);
+            }
         }
 
         return $this;
     }
+
 
     public function __toString() {
         return $this->name;
