@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Contract;
+use App\Entity\ContractType;
 use App\Form\ContractForm;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -24,6 +26,9 @@ class ContractController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $entityManager = $this->getDoctrine()->getManager();
+
+            $contract->setCreateDateTime(new \DateTime('now'));
+
             $entityManager->persist($contract);
             $entityManager->flush();
 
@@ -33,6 +38,16 @@ class ContractController extends AbstractController
         return $this->render('contract/create.html.twig', [
             'contract' => $contract,
             'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/contract/select-type/{id}", name="contract_select-type")
+     */
+    public function selectProperties(ContractType $contractType)
+    {
+        return new JsonResponse([
+            'contractType' => $contractType
         ]);
     }
 
