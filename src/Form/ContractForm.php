@@ -24,7 +24,7 @@ class ContractForm extends AbstractType
             ->add('slug', TextType::class)
             ->add('type', EntityType::class,[
                 'class' => ContractType::class,
-                'choice_label' => 'name'])
+                'choice_label' => 'name']);
 
         $builder->get('type')->addEventListener(
             FormEvents::PRE_SET_DATA,
